@@ -49,6 +49,7 @@ public:
     glm::ivec2 defaultFramebufferSize() override;
 
     void makeCurrent() override;
+	QOpenGLWindow *window();
 
 private:
     QOpenGLWindow *m_window;

@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
 
     motorcar::Scene *scene = new motorcar::Scene();
 
-    motorcar::Compositor *compositor = motorcar::Compositor::createCompositor(argc, argv, scene, motorcar::Compositor::Type::OsvrQtWayland) ;
+    motorcar::Compositor *compositor = motorcar::Compositor::createCompositor(argc, argv, scene) ;
     scene->setCompositor(compositor);
 
     scene->setWindowManager( new motorcar::WindowManager(scene, compositor->defaultSeat()));

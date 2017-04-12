@@ -47,16 +47,12 @@ namespace motorcar {
 class Compositor
 {
 public:
-    enum Type {
-        QtWayland,
-        OsvrQtWayland
-    };
 
     virtual ~Compositor();
 
     ///Factory method to create compositors with external dependencies
     /*Currently this method returns a QtWaylandMotorcarCompositor */
-    static Compositor *createCompositor(int &argc, char **argv, Scene *scene, Type type = Type::QtWayland);
+    static Compositor *createCompositor(int &argc, char **argv, Scene *scene);
 
     ///Starts the compositor main draw loop
     /*Starts the compositor and blocks until the compositor (usually another thread) has finished,

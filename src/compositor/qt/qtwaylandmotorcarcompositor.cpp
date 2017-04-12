@@ -377,6 +377,7 @@ void QtWaylandMotorcarCompositor::render()
     scene()->drawFrame();
     scene()->finishFrame();
 
+    m_glData->m_window->makeCurrent();
     m_glData->m_window->swapBuffers();
 
     struct timeval tv;
@@ -394,7 +395,7 @@ void QtWaylandMotorcarCompositor::render()
     }
     m_frames++;
 
-    m_renderScheduler.start(16);
+    m_renderScheduler.start(0);
 }
 
 bool QtWaylandMotorcarCompositor::eventFilter(QObject *obj, QEvent *event)

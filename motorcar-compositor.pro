@@ -60,7 +60,6 @@ HEADERS += \
     src/compositor/qt/qtwaylandmotorcarcompositor.h \
     src/compositor/qt/qopenglwindow.h \
     src/compositor/qt/opengldata.h \
-    src/compositor/osvr/osvrqtwaylandmotorcarcompositor.h \
     src/compositor/geometry.h \
     src/compositor/scenegraph/scenegraphnode.h \
     src/compositor/scenegraph/scenegraph.h \
@@ -77,7 +76,6 @@ HEADERS += \
     src/compositor/gl/openglcontext.h \
     src/compositor/qt/qtwaylandmotorcaropenglcontext.h \
     src/compositor/scenegraph/output/display/display.h \
-    src/compositor/scenegraph/output/display/osvrdisplay.h \
     src/compositor/scenegraph/output/display/rendertotexturedisplay.h \
     src/compositor/scenegraph/output/wireframenode.h \
     src/compositor/compositor.h \
@@ -104,6 +102,9 @@ HEADERS += \
     src/compositor/events/sixdofevent.h \
     src/compositor/scenegraph/input/sixdofpointingdevice.h \
     src/compositor/scenegraph/output/wayland/motorcarsurfacenode.h\
+    src/device/device.h \
+    src/device/osvr_hmd.h \
+    src/device/osvr_controller.h \
 #    src/device/device.h \
 #    src/device/oculushmd.h \
 #    src/device/sixensemotionsensingsystem.h \
@@ -117,7 +118,6 @@ SOURCES += \
     src/compositor/qt/qtwaylandmotorcarcompositor.cpp \
     src/compositor/qt/qopenglwindow.cpp \
     src/compositor/qt/opengldata.cpp \
-    src/compositor/osvr/osvrqtwaylandmotorcarcompositor.cpp \
     src/compositor/geometry.cpp \
     src/compositor/scenegraph/scenegraphnode.cpp \
     src/compositor/scenegraph/physicalnode.cpp \
@@ -131,7 +131,6 @@ SOURCES += \
     src/compositor/gl/openglcontext.cpp \
     src/compositor/qt/qtwaylandmotorcaropenglcontext.cpp \
     src/compositor/scenegraph/output/display/display.cpp \
-    src/compositor/scenegraph/output/display/osvrdisplay.cpp \
     src/compositor/scenegraph/output/display/rendertotexturedisplay.cpp \
     src/compositor/scenegraph/output/wireframenode.cpp \
     src/compositor/compositor.cpp \
@@ -155,6 +154,8 @@ SOURCES += \
     src/compositor/events/sixdofevent.cpp \
     src/compositor/scenegraph/input/sixdofpointingdevice.cpp \
     src/compositor/scenegraph/output/wayland/motorcarsurfacenode.cpp\
+    src/device/osvr_hmd.cpp \
+    src/device/osvr_controller.cpp \
 #    src/device/oculushmd.cpp \
 #    src/device/sixensemotionsensingsystem.cpp \
 #    src/device/sixensecontrollernode.cpp \

@@ -36,44 +36,55 @@
 #ifndef OSVRHMD_H
 #define OSVRHMD_H
 
-#include <scenegraph/output/display/osvrdisplay.h>
+#include <scenegraph/output/display/rendertotexturedisplay.h>
 #include <scenegraph/input/singlebonetracker.h>
 
+#include <scenegraph/output/viewpoint.h>
+
 #include <osvr/ClientKit/Context.h>
+#include <osvr/RenderKit/RenderManager.h>
+
 #include <osvr/ClientKit/Interface.h>
 #include <osvr/ClientKit/InterfaceStateC.h>
-#include <osvr/ClientKit/Display.h>
 
 #include <glm/gtc/quaternion.hpp>
 
+#include <algorithm>
+
 namespace motorcar {
 
-class OsvrHMD : public OSVRDisplay
-{
-public:
-    
-    bool isInitialized(){ return m_initialized;}
+	class OsvrHMD : public RenderToTextureDisplay
+	{
+		public:
 
-    virtual void prepareForDraw() override;
-    virtual void finishDraw() override;
+			OsvrHMD(Skeleton *skeleton, OpenGLContext *glContext, PhysicalNode *parent);
+			~OsvrHMD();
 
-    OsvrHMD(Skeleton *skeleton, OpenGLContext *glContext, PhysicalNode *parent);
-    ~OsvrHMD();
+			virtual void prepareForDraw() override;
+			virtual void finishDraw() override;
 
-private:
+			virtual glm::ivec2 size() override;
 
-    bool m_initialized;
-    //ovrHmd m_hmd;
-    //ovrVector3f m_hmdToEyeViewOffset[2];
+		private:
+			osvr::clientkit::ClientContext m_context;
 
+			osvr::renderkit::RenderManager* m_renderManager;
+			osvr::renderkit::RenderManager::RenderParams m_params;
 
-    unsigned int m_frameIndex;
+			GLuint frameBuffer;
+			std::vector<osvr::renderkit::RenderBuffer> colorBuffers;
+			std::vector<GLuint> depthBuffers;
+			std::vector<osvr::renderkit::RenderInfo> m_renderInfo;
 
-    osvr::clientkit::ClientContext osvrcontext;
-    osvr::clientkit::Interface head;
-    OSVR_PoseState state;
-    OSVR_TimeValue timestamp;
-};
+			osvr::clientkit::Interface m_interface;
+
+			glm::ivec2 m_renderTargetSize;
+
+			bool SetupRendering(osvr::renderkit::GraphicsLibrary library);
+
+			void setViewpointProjection(ViewPoint *viewpoint, osvr::renderkit::OSVR_ProjectionMatrix &projectionToUse);
+			void setViewpointPose(ViewPoint *viewpoint, OSVR_PoseState &pose);
+	};
 }
 
 
