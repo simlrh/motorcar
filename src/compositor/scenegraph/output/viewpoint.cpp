@@ -299,23 +299,6 @@ void ViewPoint::destroy_func(wl_resource *resource)
 
 
 
-glm::vec4 ViewPort::viewportParams() const
-{
-    return glm::vec4(m_offsetX, m_offsetY, m_width, m_height);
-}
-Geometry::Rectangle *ViewPort::bufferGeometry() const
-{
-    return m_bufferGeometry;
-}
-
-void ViewPort::setBufferGeometry(Geometry::Rectangle *bufferGeometry)
-{
-    m_bufferGeometry = bufferGeometry;
-}
-
-
-
-
 void ViewPoint::bind_func(struct wl_client *client, void *data,
                           uint32_t version, uint32_t id)
 {

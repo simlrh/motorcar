@@ -60,6 +60,21 @@ void ViewPort::update(glm::vec2 normalizedPos, glm::vec2 normalizedSize, Geometr
     m_bufferGeometry = bufferGeometry;
 }
 
+glm::vec4 ViewPort::viewportParams() const
+{
+    return glm::vec4(m_offsetX, m_offsetY, m_width, m_height);
+}
+Geometry::Rectangle *ViewPort::bufferGeometry() const
+{
+    return m_bufferGeometry;
+}
+
+void ViewPort::setBufferGeometry(Geometry::Rectangle *bufferGeometry)
+{
+    m_bufferGeometry = bufferGeometry;
+}
+
+
 glm::vec2 ViewPort::displayCoordsToViewportCoords(float pixelX, float pixelY) const
 {
     return glm::vec2(((pixelX - offsetX()) / width() - 0.5f), ((pixelY - offsetY()) / height()  - 0.5f) * (height() / width()));
